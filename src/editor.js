@@ -7,11 +7,8 @@
     var self = this
 
     var value = $("input[name="+object_name+"]").val()
-    console.log(value)
     if(value != "") value = JSON.parse(value)
     else value = "{}"
-
-    console.log(value)
 
     var settings = $.extend({
       widgets: [
