@@ -6,6 +6,13 @@
 
     var self = this
 
+    var value = $("input[name="+object_name+"]").val()
+    console.log(value)
+    if(value != "") value = JSON.parse(value)
+    else value = "{}"
+
+    console.log(value)
+
     var settings = $.extend({
       widgets: [
         { id: 'h1', icon: 'fas fa-heading', title: 'h1' },
@@ -36,7 +43,7 @@
         'container': 'container'
       },
       input: 'uk-input',
-      value: JSON.parse($("input[name="+object_name+"]").val()).html
+      value: value.html
     }, options)
 
     var dragObj, activeObj, loopid = 0, editObj, ace_editor;

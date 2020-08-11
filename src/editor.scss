@@ -212,6 +212,8 @@ section.editor-cms, section.edit-mode { margin-left: 100px; }
 
 .editor-cms .dragging { opacity: 0.2; }
 
+.editor-cms img { max-width: 100%; }
+
 .editor-cms .edit-mode .drag { cursor: move; }
 
 .editor-cms .edit-mode [data-type=video] { padding: 10px; cursor: move; }
