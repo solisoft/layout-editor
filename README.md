@@ -22,6 +22,7 @@ https://player.vimeo.com/video/446930997
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.21.0/trumbowyg.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/trumbowyg@2.21.0/plugins/colors/trumbowyg.colors.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/solisoft/layout-editor@master/public/bundle.js"></script>
   </head>
   <body>
@@ -35,3 +36,8 @@ https://player.vimeo.com/video/446930997
   </body>
 </html>
 ```
+
+# Demo
+
+https://jsfiddle.net/wnjah0xk/
+
