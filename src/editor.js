@@ -40,7 +40,24 @@
         'container': 'container'
       },
       input: 'uk-input',
-      value: value.html
+      value: value.html,
+      trumbowyg: {
+        btns: [
+          ['viewHTML'],
+          ['undo', 'redo'], // Only supported in Blink browsers
+          ['formatting'],
+          ['strong', 'em', 'del'],
+          ['superscript', 'subscript'],
+          ['foreColor', 'backColor'],
+          ['link'],
+          ['insertImage'],
+          ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+          ['unorderedList', 'orderedList'],
+          ['horizontalRule'],
+          ['removeformat'],
+          ['fullscreen']
+        ]
+      }
     }, options)
 
     var dragObj, activeObj, loopid = 0, editObj, ace_editor;
@@ -746,21 +763,8 @@
     set_content(settings.value)
 
     $('#trumbowyg-'+object_name).trumbowyg({
-      btns: [
-        ['viewHTML'],
-        ['undo', 'redo'],
-        ['formatting'],
-        ['strong', 'em', 'del'],
-        ['superscript', 'subscript'],
-        ['link'],
-        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-        ['unorderedList', 'orderedList'],
-        ['horizontalRule'],
-        ['removeformat'],
-        ['fullscreen']
-      ],
+      btns: settings.trumbowyg.btns,
       resetCss: true,
-      svgPath: 'img/icons.svg',
       removeformatPasted: true
     }).on('tbwchange', function () {
       editObj.html($('#trumbowyg-' + object_name).trumbowyg('html'))
