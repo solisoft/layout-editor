@@ -37,6 +37,13 @@ https://player.vimeo.com/video/446930997
 </html>
 ```
 
+# Compile
+
+```bash
+npm install
+./node_modules/webpack/bin/webpack.js
+```
+
 # Demo
 
 https://jsfiddle.net/wnjah0xk/2/
