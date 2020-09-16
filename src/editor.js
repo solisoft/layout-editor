@@ -185,6 +185,16 @@
           html = '<div class="sg-row cms_row sub_row drag drop" data-type="col84"><div class="col-8 cms_col"></div><div class="' + settings.grid['col-4'] + ' cms_col"></div></div></div>'
           after = ''
           break
+        case 'col10-2':
+            before = ''
+            html = '<div class="sg-row cms_row sub_row drag drop" data-type="col10-2"><div class="col-10 cms_col"></div><div class="' + settings.grid['col-2'] + ' cms_col"></div></div></div>'
+            after = ''
+          break
+        case 'col2-10':
+            before = ''
+            html = '<div class="sg-row cms_row sub_row drag drop" data-type="col2-10"><div class="col-2 cms_col"></div><div class="' + settings.grid['col-10'] + ' cms_col"></div></div></div>'
+            after = ''
+            break
       }
       loopid++
 
