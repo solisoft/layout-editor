@@ -24,6 +24,8 @@
         { id: 'col363', icon: 'fas fa-columns', title: '3-6-3' },
         { id: 'col48', icon: 'fas fa-columns', title: '4-8' },
         { id: 'col84', icon: 'fas fa-columns', title: '8-4' },
+        { id: 'col10-2', icon: 'fas fa-columns', title: '10-2' },
+        { id: 'col2-10', icon: 'fas fa-columns', title: '2-10' },
         { id: 'text', icon: 'fas fa-align-left', title: 'text' },
         { id: 'img', icon: 'fas fa-image', title: 'img' },
         //{ id: 'slide', icon: 'fas fa-images', title: 'slide' },
@@ -33,10 +35,12 @@
       ],
       grid: {
         'col-12': 'col-12',
+        'col-10': 'col-10',
         'col-8': 'col-8',
         'col-6': 'col-6',
         'col-4': 'col-4',
         'col-3': 'col-3',
+        'col-2': 'col-2',
         'container': 'container'
       },
       input: 'uk-input',
