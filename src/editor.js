@@ -152,49 +152,49 @@
           break
         case 'col2':
           before = ''
-          html = '<div class="sg-row cms_row sub_row drag drop" data-type="col2"><div class="' + settings.grid['col-6'] + ' cms_col"></div><div class="' + settings.grid['col-6'] + ' cms_col"></div></div>'
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col2"><div class="' + settings.grid['col-6'] + ' cms_col"></div><div class="' + settings.grid['col-6'] + ' cms_col"></div></div>'
           after = ''
           break
         case 'col3':
           before = ''
-          html = '<div class="sg-row cms_row sub_row drag drop" data-type="col3"><div class="col-4 cms_col"></div><div class="' + settings.grid['col-4'] + ' cms_col"></div><div class="' + settings.grid['col-4'] + ' cms_col"></div></div>'
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col3"><div class="col-4 cms_col"></div><div class="' + settings.grid['col-4'] + ' cms_col"></div><div class="' + settings.grid['col-4'] + ' cms_col"></div></div>'
           after = ''
           break
         case 'col4':
           before = ''
-          html = '<div class="sg-row cms_row sub_row drag drop" data-type="col4"><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div></div>'
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col4"><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div></div>'
           after = ''
           break
         case 'col282':
           before = ''
-          html = '<div class="sg-row cms_row sub_row drag drop" data-type="col282"><div class="col-2 cms_col"></div><div class="' + settings.grid['col-8'] + ' cms_col"></div><div class="col-2 cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div></div>'
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col282"><div class="col-2 cms_col"></div><div class="' + settings.grid['col-8'] + ' cms_col"></div><div class="col-2 cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div></div>'
           after = ''
           break
         case 'col363':
           before = ''
-          html = '<div class="sg-row cms_row sub_row drag drop" data-type="col363"><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-6'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div></div></div>'
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col363"><div class="' + settings.grid['col-3'] + ' cms_col"></div><div class="' + settings.grid['col-6'] + ' cms_col"></div><div class="' + settings.grid['col-3'] + ' cms_col"></div></div></div>'
           after = ''
           break
         case 'col48':
           before = ''
-          html = '<div class="sg-row cms_row sub_row drag drop" data-type="col48"><div class="' + settings.grid['col-4'] + ' cms_col"></div><div class="' + settings.grid['col-8'] + ' cms_col"></div></div></div>'
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col48"><div class="' + settings.grid['col-4'] + ' cms_col"></div><div class="' + settings.grid['col-8'] + ' cms_col"></div></div></div>'
           after = ''
           break
         case 'col84':
           before = ''
-          html = '<div class="sg-row cms_row sub_row drag drop" data-type="col84"><div class="col-8 cms_col"></div><div class="' + settings.grid['col-4'] + ' cms_col"></div></div></div>'
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col84"><div class="col-8 cms_col"></div><div class="' + settings.grid['col-4'] + ' cms_col"></div></div></div>'
           after = ''
           break
         case 'col10-2':
-            before = ''
-            html = '<div class="sg-row cms_row sub_row drag drop" data-type="col10-2"><div class="col-10 cms_col"></div><div class="' + settings.grid['col-2'] + ' cms_col"></div></div></div>'
-            after = ''
+          before = ''
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col10-2"><div class="col-10 cms_col"></div><div class="' + settings.grid['col-2'] + ' cms_col"></div></div></div>'
+          after = ''
           break
         case 'col2-10':
-            before = ''
-            html = '<div class="sg-row cms_row sub_row drag drop" data-type="col2-10"><div class="col-2 cms_col"></div><div class="' + settings.grid['col-10'] + ' cms_col"></div></div></div>'
-            after = ''
-            break
+          before = ''
+          html = '<div class="sg-row cms_row sub_row drag" data-type="col2-10"><div class="col-2 cms_col"></div><div class="' + settings.grid['col-10'] + ' cms_col"></div></div></div>'
+          after = ''
+          break
       }
       loopid++
 
@@ -723,7 +723,8 @@
                       Edit content</a>'
     view_mode += '<section class="view-mode isactive">\
                         <div class="page-content"></div></section>'
-    console.log(view_mode, $(self))
+    
+    $(self).append(view_mode)
     $(self).append(view_mode)
 
     var items = '<aside class="edit-mode">\
