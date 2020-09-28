@@ -725,8 +725,7 @@
                         <div class="page-content"></div></section>'
     
     $(self).append(view_mode)
-    $(self).append(view_mode)
-
+    
     var items = '<aside class="edit-mode">\
                   <div class="sg-container toolbox"><h1>Page tools</h1> \
                   <div class="sg-row"></div>\
