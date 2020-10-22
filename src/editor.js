@@ -60,7 +60,9 @@
           ['horizontalRule'],
           ['removeformat'],
           ['fullscreen']
-        ]
+        ],
+        resetCss: true,
+        removeformatPasted: true
       }
     }, options)
 
@@ -723,9 +725,9 @@
                       Edit content</a>'
     view_mode += '<section class="view-mode isactive">\
                         <div class="page-content"></div></section>'
-    
+
     $(self).append(view_mode)
-    
+
     var items = '<aside class="edit-mode">\
                   <div class="sg-container toolbox"><h1>Page tools</h1> \
                   <div class="sg-row"></div>\
@@ -776,11 +778,7 @@
 
     set_content(settings.value)
 
-    $('#trumbowyg-'+object_name).trumbowyg({
-      btns: settings.trumbowyg.btns,
-      resetCss: true,
-      removeformatPasted: true
-    }).on('tbwchange', function () {
+    $('#trumbowyg-'+object_name).trumbowyg(settings.trumbowyg).on('tbwchange', function () {
       editObj.html($('#trumbowyg-' + object_name).trumbowyg('html'))
     });
 
