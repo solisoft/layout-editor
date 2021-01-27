@@ -45,6 +45,11 @@
       },
       input: 'uk-input',
       value: value.html,
+      texts: {
+        "edit_content": "Edit content",
+        "page_tools": "Page tools",
+        "exit": "Exit"
+      },
       trumbowyg: {
         btns: [
           ['viewHTML'],
@@ -725,16 +730,16 @@
 
 
     var view_mode = '<a href="" class="toggle-layout view-mode isactive">\
-                      Edit content</a>'
+                      ' + settings.texts.edit_content +'</a>'
     view_mode += '<section class="view-mode isactive">\
                         <div class="page-content"></div></section>'
 
     $(self).append(view_mode)
 
     var items = '<aside class="edit-mode">\
-                  <div class="sg-container toolbox"><h1>Page tools</h1> \
+                  <div class="sg-container toolbox"><h1>'+ settings.texts.page_tools +'</h1> \
                   <div class="sg-row"></div>\
-                  <div class="sg-row"><a href="" class="toggle-layout">Exit</a></div></div>\
+                  <div class="sg-row"><a href="" class="toggle-layout">'+ settings.texts.exit +'</a></div></div>\
                 </aside>'
 
     $(self).append(items)
