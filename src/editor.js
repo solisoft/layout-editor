@@ -253,7 +253,7 @@
 
                   $.ajax({
                     headers: {
-                      'X-Session-Id': localStorage.getItem('X-Session-Id')
+                      'X-Session-Id': localStorage.getItem('X-Session-Id') || localStorage.getItem('X-SessionFront-Id')
                     },
                     xhr: function () {
                       var xhr = new window.XMLHttpRequest();
