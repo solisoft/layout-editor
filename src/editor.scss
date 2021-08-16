@@ -72,6 +72,17 @@ aside, .sg-container {
   h1,h2,h3,h4,h5,h6,p { color: black !important; }
 }
 
+.editor-cms .notification {
+  position: fixed;
+  display: none;
+  bottom: 0;
+  background: greenyellow;
+  color:black;
+  text-align: "center";
+  right: 0;
+  padding: 10px;
+}
+
 .editor-cms a.view-mode.toggle-layout {
   background: #2779FF;
   color: white;
@@ -271,4 +282,11 @@ section.editor-cms, section.edit-mode { margin-left: 100px; }
 
 .datepickers-container {
   z-index: 1000000 !important;
+}
+
+.editor-cms .button {
+  display: block;
+  margin: 10px 0;
+  background: #ddd;
+  color: #000;
 }

@@ -48,7 +48,8 @@
       texts: {
         "edit_content": "Edit content",
         "page_tools": "Page tools",
-        "exit": "Exit"
+        "exit": "Exit",
+        "save": "Save"
       },
       trumbowyg: {
         btns: [
@@ -225,7 +226,7 @@
       }
 
       window.drop = function (event) {
-        var subdomain = document.location.host.split(".")[0]
+        var subdomain = settings.subdomain || document.location.host.split(".")[0]
         event.stopPropagation()
         event.preventDefault()
 
@@ -245,7 +246,6 @@
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onloadend = function () {
-                  var base64data = reader.result;
 
                   var formData = new FormData();
                   formData.append("files", file)
@@ -344,7 +344,7 @@
 
     /*
       set_empty_rows <function>
-      add Class .empty_row to all empty .cms_row
+      add class .empty_row to all empty .cms_row
     */
     var set_empty_rows = function () {
       $(self).find('.cms_row').removeClass('empty_row')
@@ -694,12 +694,10 @@
         return false
       })
 
-      $(self).find('.toggle-layout').on('click', function (e) {
-        e.preventDefault()
+      var save_layout = function() {
+        $(self).find(".notification").show()
+        setTimeout(() => { $(self).find(".notification").hide() }, 1000);
         set_windows_events()
-        $(self).find('.view-mode').toggleClass('isactive')
-        $(self).find('.edit-mode').toggleClass('isactive')
-        $(self).toggleClass('fullscreen')
         $('[data-exported]').removeAttr('data-exported')
         var data = {
           html: $(self).find('.edit-mode .page-content').html(),
@@ -707,12 +705,34 @@
         }
 
         $('input[name="' + object_name + '"]').val(JSON.stringify(data))
-
         $(self).find('.page-content').html(data.html || '')
         remove_drag_attributes()
         $(self).find('[data-html]').each(function (i, el) {
           $(el).html($(el).attr('data-html'))
         })
+      }
+
+      $(self).find('.save-layout').on('click', function (e) {
+        e.preventDefault()
+        save_layout()
+
+        if(settings.callbacks && settings.callbacks.save) {
+          settings.callbacks.save()
+        }
+
+        return false
+      })
+      /* On editor exit */
+      $(self).find('.toggle-layout').on('click', function (e) {
+        e.preventDefault()
+
+        //save_layout()
+
+        $(self).find('.view-mode').toggleClass('isactive')
+        $(self).find('.edit-mode').toggleClass('isactive')
+
+
+        $(self).toggleClass('fullscreen')
 
         return false
       })
@@ -739,7 +759,8 @@
     var items = '<aside class="edit-mode">\
                   <div class="sg-container toolbox"><h1>'+ settings.texts.page_tools +'</h1> \
                   <div class="sg-row"></div>\
-                  <div class="sg-row"><a href="" class="toggle-layout">'+ settings.texts.exit +'</a></div></div>\
+                  <div class="sg-row"><a href="" class="button save-layout">'+ settings.texts.save +'</a></div>\
+                  <div class="sg-row"><a href="" class="button toggle-layout">'+ settings.texts.exit +'</a></div></div>\
                 </aside>'
 
     $(self).append(items)
@@ -780,7 +801,7 @@
           </div>\
         </div>\
       </div>\
-    </section>'
+    </section><section class="notification">Saved!</section>'
 
     $(self).append(content)
 
