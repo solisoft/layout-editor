@@ -369,7 +369,6 @@
           $(el).parent().hasClass('cms_row')) {
           $(el).after(drop_empty)
         }
-
       })
 
       $(self).find('.edit-mode .page-content > .cms_row').each(function (y, row) {
@@ -856,6 +855,8 @@
 
       }
     }
+
+    set_windows_events()
 
     return this;
   };
