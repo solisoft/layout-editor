@@ -285,6 +285,8 @@
                         picture += '<source media="(min-width: 800px)" srcset="/asset/o/' + data.filename + '?_from='+ btoa(subdomain) +'">'
                         picture += '<img src="/asset/o/' + data.filename + '">'
                         picture += '</picture>'
+                        console.log(el)
+                        console.log(picture)
                         $(el).html(picture)
                       }, 100)
                       clear_empty_drags()
