@@ -288,8 +288,6 @@
                         picture += '<source media="(min-width: 800px)" srcset="/asset/o/' + data.filename + '?_from='+ btoa(subdomain) +'">'
                         picture += '<img src="/asset/o/' + data.filename + '">'
                         picture += '</picture>'
-                        console.log(el)
-                        console.log(picture)
                         $(el).html(picture)
                       }, 100)
                       clear_empty_drags()
@@ -299,7 +297,6 @@
               }
             }
           }
-          console.log("isFile", isFile)
 
           if (!isFile) {
             $('.active').removeClass('active')
@@ -367,9 +364,7 @@
     */
     var add_drop_empty = function () {
       clear_empty_drags()
-      console.log("add_drop_empty:", "-", $(self), "-", $(self).find('.drop').length)
-      console.log($(self))
-      console.log("------")
+
       var empty = '<div class="sg-row cms_row" data-type="full"><div class="col-12 cms_col"><div class="drop drop_empty row_empty"></div></div></div>'
       var drop_empty = '<div class="drop drop_empty col_empty"><div></div></div>'
 
