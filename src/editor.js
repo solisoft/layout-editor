@@ -238,15 +238,14 @@
           // Use DataTransferItemList interface to access the file(s)
           var count = event.dataTransfer.items.length
           if (count > 1) count = 1
-          console.log(event, count)
           for (var i = 0; i < event.dataTransfer.items.length; i++) {
             // If dropped items aren't files, reject them
             if (event.dataTransfer.items[i].kind === 'file') {
-              isFile = true
               var file = event.dataTransfer.items[i].getAsFile();
-              console.log(file)
 
-              if (file.type.indexOf('image') >= 0) {
+              if (file.type.indexOf('image') >= 0 && file.name != "1200x600.png") {
+                isFile = true
+
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onloadend = function () {
