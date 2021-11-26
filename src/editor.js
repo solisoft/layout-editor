@@ -232,17 +232,20 @@
         event.preventDefault()
 
         var el = $(event.target).hasClass('drop') ? $(event.target) : $(event.target).closest('.drop')
-        console.log(event)
+
         if (event.dataTransfer.items) { // File drag & drop
           var isFile = false
           // Use DataTransferItemList interface to access the file(s)
           var count = event.dataTransfer.items.length
           if (count > 1) count = 1
+          console.log(event, count)
           for (var i = 0; i < event.dataTransfer.items.length; i++) {
             // If dropped items aren't files, reject them
             if (event.dataTransfer.items[i].kind === 'file') {
               isFile = true
               var file = event.dataTransfer.items[i].getAsFile();
+              console.log(file)
+
               if (file.type.indexOf('image') >= 0) {
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
@@ -297,6 +300,7 @@
               }
             }
           }
+          console.log("isFile", isFile)
 
           if (!isFile) {
             $('.active').removeClass('active')
