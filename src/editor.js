@@ -232,7 +232,7 @@
         event.preventDefault()
 
         var el = $(event.target).hasClass('drop') ? $(event.target) : $(event.target).closest('.drop')
-
+        console.log(event)
         if (event.dataTransfer.items) { // File drag & drop
           var isFile = false
           // Use DataTransferItemList interface to access the file(s)
