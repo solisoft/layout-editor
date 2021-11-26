@@ -363,11 +363,11 @@
     */
     var add_drop_empty = function () {
       clear_empty_drags()
-      console.log("add_drop_empty")
+      console.log("add_drop_empty", $(self).find('.drop').length)
       var empty = '<div class="sg-row cms_row" data-type="full"><div class="col-12 cms_col"><div class="drop drop_empty row_empty"></div></div></div>'
       var drop_empty = '<div class="drop drop_empty col_empty"><div></div></div>'
 
-      $(self).find('.drop').each(function (i, el) {
+      $(self).find('.edit-mode .cms_editor .sub_row .cms_col .drop').each(function (i, el) {
         if ($(el).parent().hasClass('cms_col') ||
           $(el).parent().hasClass('cms_row')) {
           $(el).after(drop_empty)
