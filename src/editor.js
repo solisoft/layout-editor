@@ -6,6 +6,7 @@
 
     var self = this
 
+
     var value = $("input[name="+object_name+"]").val()
     if(value != "") value = JSON.parse(value)
     else value = "{}"
@@ -214,7 +215,7 @@
       Activate drag & drop events
     */
     var set_windows_events = function () {
-      window.drag = function (event) {
+      window[self.attr("id") + "_drag"] = function (event) {
         var el = $(event.target).hasClass('drag') ? $(event.target) : $(event.target).closest('.drag')
         el.addClass('dragging')
         event.stopPropagation();
@@ -225,7 +226,7 @@
         }, 0)
       }
 
-      window.drop = function (event) {
+      window[self.attr("id") + "_drop"] = function (event) {
         var subdomain = settings.subdomain || document.location.host.split(".")[0]
         event.stopPropagation()
         event.preventDefault()
@@ -325,7 +326,7 @@
         }
       }
 
-      window.drag_end = function (event) {
+      window[self.attr("id") + "_drag_end"] = function (event) {
         event.stopPropagation()
 
         $('.row_editor').css('margin-left', (-99999) + 'px')
@@ -335,7 +336,7 @@
         clear_empty_drags()
       }
 
-      window.allow_drop = function (event) {
+      window[self.attr("id") + "_allow_drop"] = function (event) {
         event.stopPropagation();
         event.preventDefault();
         var el = $(event.target).hasClass('drop') ? $(event.target) : $(event.target).closest('.drag')
@@ -383,8 +384,8 @@
         if (!$(col).hasClass('col-12')) $(col).prepend(drop_empty)
       })
       $(self).find('.edit-mode .cms_editor .page-content').append(empty)
-      $(self).find('.edit-mode .drop_empty').attr('ondragover', 'allow_drop(event)')
-      $(self).find('.edit-mode .drop_empty').attr('ondrop', 'drop(event)')
+      $(self).find('.edit-mode .drop_empty').attr('ondragover', 'window["' + self.attr('id') +  '_allow_drop"](event)')
+      $(self).find('.edit-mode .drop_empty').attr('ondrop', 'window["' + self.attr('id') +  '_drop"](event)')
     }
 
     /*
@@ -442,8 +443,8 @@
     */
     var prepare_drag = function (el) {
       el.attr('draggable', true)
-      el.attr('ondragstart', 'drag(event)')
-      el.attr('ondragend', 'drag_end(event)')
+      el.attr('ondragstart', 'window["' + self.attr('id') +  '_drag"](event)')
+      el.attr('ondragend', 'window["' + self.attr('id') +  '_drag_end"](event)')
     }
 
     /*
@@ -452,8 +453,8 @@
     */
     var prepare_drop = function (el) {
       el.addClass('drop')
-      el.attr('ondragover', 'allow_drop(event)')
-      el.attr('ondrop', 'drop(event)')
+      el.attr('ondragover', 'window["' + self.attr('id') +  '_allow_drop"](event)')
+      el.attr('ondrop', 'window["' + self.attr('id') +  '_drop"](event)')
     }
 
     /*
@@ -688,10 +689,10 @@
         var html = get_widget_html($(this).data('id'), true)
         $(self).find('.edit-mode .page-content').append(html)
         $(self).find('.edit-mode .drag').attr('draggable', true)
-        $(self).find('.edit-mode .drag').attr('ondragstart', 'drag(event)')
-        $(self).find('.edit-mode .drag').attr('ondragover', 'allow_drop(event)')
-        $(self).find('.edit-mode .drag').attr('ondrop', 'drop(event)')
-        $(self).find('.edit-mode .drag').attr('ondragend', 'drag_end(event)')
+        $(self).find('.edit-mode .drag').attr('ondragstart', 'window["' + self.attr('id') +  '_drag"](event)')
+        $(self).find('.edit-mode .drag').attr('ondragover', 'window["' + self.attr('id') +  '_allow_drop"](event)')
+        $(self).find('.edit-mode .drag').attr('ondrop', 'window["' + self.attr('id') +  '_drop"](event)')
+        $(self).find('.edit-mode .drag').attr('ondragend', 'window["' + self.attr('id') +  '_drag_end"](event)')
 
         set_empty_rows()
 
