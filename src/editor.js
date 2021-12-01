@@ -667,7 +667,8 @@
             $(self).find("select[data-name=img-alignment").val(img_div[0].style['text-align'])
             ace_editor.session.setMode('ace/mode/html');
             ace_editor.setOptions({ maxLines: Infinity, tabSize: 2, useSoftTabs: true });
-            ace_editor.getSession().setValue($(this).html());
+            html = $(this).html()
+            ace_editor.getSession().setValue(html);
           }
 
         }
