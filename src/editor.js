@@ -279,7 +279,7 @@
                     success: function (data) {
                       data = JSON.parse(data)
                       setTimeout(function () {
-                        var picture = "<picture>\n"
+                        var picture = "<picture>"
                         picture += "\n  " + '<source media="(max-width: 480px)" srcset="' + document.location.origin + '/asset/r/' + data.filename + '/480.webp?_from='+ btoa(subdomain) +'" type="image/webp" />'
                         picture += "\n  " + '<source media="(max-width: 480px)" srcset="' + document.location.origin + '/asset/r/' + data.filename + '/480?_from='+ btoa(subdomain) +'" />'
                         picture += "\n  " + '<source media="(max-width: 799px)" srcset="' + document.location.origin + '/asset/r/' + data.filename + '/799.webp?_from='+ btoa(subdomain) +'" type="image/webp" />'
