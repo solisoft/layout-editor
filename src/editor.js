@@ -70,7 +70,8 @@
         resetCss: true,
         removeformatPasted: true
       },
-      customCss: "* { color: black; }"
+      customCss: "* { color: black; }",
+      className: 'layout-editor'
     }, options)
 
     var dragObj, activeObj, loopid = 0, editObj, ace_editor, ace_css_editor;
@@ -820,6 +821,8 @@
       </div>\
     </section><section class="notification">Saved!</section>'
 
+    console.log(settings)
+    $(self).addClass(settings.className)
     $(self).append(content)
 
     set_content(settings.value)
