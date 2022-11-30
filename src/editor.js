@@ -821,7 +821,6 @@
       </div>\
     </section><section class="notification">Saved!</section>'
 
-    console.log(settings)
     $(self).addClass(settings.className)
     $(self).append(content)
 

@@ -234,7 +234,7 @@ section.editor-cms, section.edit-mode { margin-left: 100px; }
   overflow-y: scroll;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 370px;
   height: 0%;
   background: rgba(255,255,255,0.95);
   z-index: 20000;
@@ -303,6 +303,7 @@ section.editor-cms, section.edit-mode { margin-left: 100px; }
   width: 350px;
   background-color: #2779FF;
   padding: 10px;
+  z-index: 30000;
   textarea {
     width: 100%;
   }
@@ -310,6 +311,6 @@ section.editor-cms, section.edit-mode { margin-left: 100px; }
     margin: 0;
     height: 98vh !important;
   }
-  z-index: 1000;
+  
   
 }
