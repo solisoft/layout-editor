@@ -49,6 +49,9 @@
 @media only screen and (min-width: 60em) { /* 960px */
   .sg-container { width: 75%; max-width: 60rem; }
 }
+@media only screen and (min-width: 60em) { /* 960px */
+  .sg-container.page-content { width: auto; margin-right: 370px; margin-left: 10px; }
+}
 
 aside, .sg-container {
   font-family: 'Lato', Helvetica, sans-serif;
@@ -69,7 +72,7 @@ aside, .sg-container {
 }
 .editor-cms { min-height: 300px; }
 .editor-cms .cms_editor {
-  h1,h2,h3,h4,h5,h6,p { color: black !important; }
+  /*h1,h2,h3,h4,h5,h6,p { color: black !important; }*/
 }
 
 .editor-cms .notification {
@@ -93,6 +96,7 @@ aside, .sg-container {
 .ace_editor {
   height: 500px;
 }
+
 .editor-cms a.view-mode.isactive.toggle-layout {
   width: 137px;
   text-align: center;
@@ -122,7 +126,7 @@ aside, .sg-container {
   -moz-transform:translateZ(-800px);
   -o-transform:translateZ(-800px);
   h1, h2, h3, h4, h5, h6 {
-    color: black !important;
+    /*color: black !important;*/
   }
 }
 
@@ -289,4 +293,23 @@ section.editor-cms, section.edit-mode { margin-left: 100px; }
   margin: 10px 0;
   background: #ddd;
   color: #000;
+}
+
+.custom-css {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 350px;
+  background-color: #2779FF;
+  padding: 10px;
+  textarea {
+    width: 100%;
+  }
+  .ace_editor {
+    margin: 0;
+    height: 98vh;
+  }
+  z-index: 1000;
+  
 }

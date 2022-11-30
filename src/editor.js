@@ -6,7 +6,6 @@
 
     var self = this
 
-
     var value = $("input[name="+object_name+"]").val()
     if(value != "") value = JSON.parse(value)
     else value = "{}"
@@ -70,10 +69,11 @@
         ],
         resetCss: true,
         removeformatPasted: true
-      }
+      },
+      customCss: "* { color: black; }"
     }, options)
 
-    var dragObj, activeObj, loopid = 0, editObj, ace_editor;
+    var dragObj, activeObj, loopid = 0, editObj, ace_editor, ace_css_editor;
 
     var ipsum = function (nb) {
       var array = 'Chocolate lollipop pastry tiramisu. Chocolate cake sweet roll dragée. Cookie halvah tootsie roll cupcake candy canes pie oat cake danish chocolate cake. Cheesecake biscuit powder sweet powder. Chocolate bar lollipop jelly-o chocolate cake. Sweet roll sweet roll cupcake topping chocolate cake. Fruitcake chocolate cake jelly-o. Marzipan candy canes jujubes. Cotton candy candy canes icing sesame snaps chocolate cake toffee liquorice jelly-o. Pastry pastry bear claw toffee. Liquorice biscuit dessert chocolate bar gummies. Carrot cake danish cookie croissant toffee gingerbread sweet roll. Icing danish muffin cheesecake jelly-o sugar plum pastry cotton candy. Chocolate bar pie apple pie chocolate bar cupcake lollipop.'.split('.')
@@ -700,6 +700,7 @@
         return false
       })
 
+      // save_layout
       var save_layout = function() {
         $(self).find(".notification").show()
         setTimeout(() => { $(self).find(".notification").hide() }, 1000);
@@ -707,7 +708,8 @@
         $('[data-exported]').removeAttr('data-exported')
         var data = {
           html: $(self).find('.edit-mode .page-content').html(),
-          json: run_export($(self).find('.edit-mode .page-content'))
+          json: run_export($(self).find('.edit-mode .page-content')),
+          css: $(self).find("style").text()
         }
 
         $('input[name="' + object_name + '"]').val(JSON.stringify(data))
@@ -718,12 +720,13 @@
         })
       }
 
+      // click on .save-layout
       $(self).find('.save-layout').on('click', function (e) {
         e.preventDefault()
         save_layout()
 
         if(settings.callbacks && settings.callbacks.save) {
-          settings.callbacks.save()
+          settings.callbacks.save($(self).find("style").text())
         }
 
         return false
@@ -731,13 +734,10 @@
       /* On editor exit */
       $(self).find('.toggle-layout').on('click', function (e) {
         e.preventDefault()
-
         //save_layout()
 
         $(self).find('.view-mode').toggleClass('isactive')
         $(self).find('.edit-mode').toggleClass('isactive')
-
-
         $(self).toggleClass('fullscreen')
 
         return false
@@ -769,7 +769,18 @@
                   <div class="sg-row"><a href="" class="button toggle-layout">'+ settings.texts.exit +'</a></div></div>\
                 </aside>'
 
+    items += '<div class="edit-mode custom-css"><textarea id="custom-css-'+object_name+'">'+ settings.customCss +'</textarea></div><style id="css-custom-'+object_name+'">'+ settings.customCss +'</style>'
+
     $(self).append(items)
+
+    css_ace_editor = ace.edit('custom-css-'+object_name)
+    css_ace_editor.getSession().setUseWrapMode(true)
+
+    css_ace_editor.session.setMode('ace/mode/css')
+    css_ace_editor.getSession().on('change', function() {
+      $("#css-custom-"+object_name).text(css_ace_editor.getSession().getValue())
+    });
+    
     $(self).addClass('editor-cms')
 
     settings.widgets.forEach(function (w) {
@@ -858,6 +869,9 @@
           })
           editObj.html('<div class="img-div" style="text-align: ' + alignment + '" data-img-width="' + width + '">' + temp[0].innerHTML + '</div>')
         }
+        editObj.closest(".cms_col").addClass($('input[data-name=col-class]').val())
+        editObj.closest(".cms_row").addClass($('input[data-name=row-class]').val())
+        editObj.closest(".sg-container").addClass($('input[data-name=container-class]').val())
         editObj.attr('data-attr', JSON.stringify(attributes))
 
       }
